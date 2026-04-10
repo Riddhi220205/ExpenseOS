@@ -22,6 +22,7 @@ services:
       - expense-data:/app/data
     ports:
       - "5000:5000"     # exposed for local dev / testing; remove in pure prod
+    
     networks:
       - expense-net
     healthcheck:
