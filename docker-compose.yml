@@ -25,12 +25,7 @@ services:
     
     networks:
       - expense-net
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:5000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
+ 
 
   # ── Frontend (nginx) ─────────────────────────────────────────────────────────
   frontend:
@@ -42,16 +37,11 @@ services:
     ports:
       - "80:80"
     depends_on:
-      backend:
-        condition: service_healthy
+      backend
+     
     networks:
       - expense-net
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost/"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-
+    
 # ── Named Volumes ───────────────────────────────────────────────────────────
 volumes:
   expense-data:
